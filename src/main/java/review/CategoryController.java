@@ -5,15 +5,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 
-public class ReviewsController {
+public class CategoryController {
 
 	@Resource
-	private ReviewRepository repository;
+	private CategoryRepository repository;
 
 	@RequestMapping("/reviews")
 	public String showAll(Model model) {
@@ -21,9 +20,9 @@ public class ReviewsController {
 		return "reviews";
 	}
 
-	@RequestMapping(value ="/review")
-	public String review (@RequestParam long id, Model model){
-		
+	@RequestMapping(value = "/review")
+	public String review(@RequestParam long id, Model model) {
+
 		model.addAttribute("repository", repository.findOne(id));
 		return "review";
 	}

@@ -1,72 +1,53 @@
 package review;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity // The Category class is annotated with @Entity, indicating that it is a
+// JPA entity
 public class Review {
 
-	long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	String title;
 	String image;
-	String category;
 	String content;
-	String rating;
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
+	@ManyToOne
+	private Category category;
+
+	private Review() {
+
+	}
+
+	public Review(String title, String image, String content) {
+		this.title = title;
+		this.image = image;
+		this.content = content;
+	}
+
+	private Long getId() {
 		return id;
 	}
 
-	/**
-	 * @return the title
-	 */
 	public String getTitle() {
 		return title;
 	}
 
-	/**
-	 * @return the image
-	 */
 	public String getImage() {
 		return image;
 	}
 
-	/**
-	 * @return the category
-	 */
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	/**
-	 * @return the content
-	 */
 	public String getContent() {
 		return content;
-	}
-
-	/**
-	 * @return the rating
-	 */
-	public String getRating() {
-		return rating;
-	}
-
-	/**
-	 * @param id
-	 * @param title
-	 * @param image
-	 * @param category
-	 * @param content
-	 * @param rating
-	 */
-	public Review(long id, String title, String image, String category, String content, String rating) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.image = image;
-		this.category = category;
-		this.content = content;
-		this.rating = rating;
 	}
 
 }

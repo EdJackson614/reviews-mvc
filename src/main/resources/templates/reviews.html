@@ -10,16 +10,17 @@
   </head>
     <body>
     
-        <h1>Review Collections</h1>
+        <h1>Review Categories</h1>
         <hr/>
         
     <div th:each="review: ${repository}" >
-        <p th:text="${review.id} "></p>
-        <p th:text="'Title: ' + ${review.title} ">Text ...</p>
+<!--         <p th:text="${review.id} "></p>
+ -->        <p th:text="'Title: ' + ${review.title} ">Text ...</p>
         <p th:text="'Category: ' + ${review.category} ">Text ...</p>
         <p th:text="'Content: ' + ${review.content} ">Text</p>
-        <a th:href="@{http://localhost:8080/review(id=${review.id})}">View More Details</a>
-        <hr/>
+        <img th:src ="${review.image}" />
+<!--         <a th:href="@{http://localhost:8080/review(id=${review.id})}">View More Details</a>
+ -->        <hr/>
         </div>
    
         
